@@ -1,7 +1,9 @@
 package com.coderscampus.assignment4;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 
 public class FileService {
 	private static Student[] students;
@@ -73,15 +75,36 @@ public class FileService {
 			
 		}
 		
-//		for (Student student : students) {
-//			line = student.getCourse();
-//			
-//			String[] studentCourseAbbreviationAndNumber = line.split(" ");
-//			
-//			student.setCourseAbbreviation(studentCourseAbbreviationAndNumber[0]);
-//			student.setCourseNumber(studentCourseAbbreviationAndNumber[1]);
-//			
-//		}
 	}
+	
+	public static void writeNewFiles(Student[] apMath, Student[] compSci, Student[] stats) {
+		
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter("course2.csv"))) {
+			for (Student student : apMath) {
+				bw.write(student.getDetails());
+				bw.newLine();
+			}
+		}catch (Exception e) {
+			System.out.println("Error reading file: " + e.getMessage());
+		}
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter("course1.csv"))) {
+			for (Student student : compSci) {
+				bw.write(student.getDetails());
+				bw.newLine();
+			}
+		}catch (Exception e) {
+			System.out.println("Error reading file: " + e.getMessage());
+		}
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter("course3.csv"))) {
+			for (Student student : stats) {
+				bw.write(student.getDetails());
+				bw.newLine();
+			}
+		}catch (Exception e) {
+			System.out.println("Error reading file: " + e.getMessage());
+		}
+	}
+	
+	
 
 }

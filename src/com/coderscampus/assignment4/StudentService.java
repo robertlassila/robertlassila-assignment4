@@ -1,5 +1,8 @@
 package com.coderscampus.assignment4;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 public class StudentService {
 	private static Student[] compSci;
 	private static Student[] apMath;
@@ -62,9 +65,23 @@ public class StudentService {
 			}
 			index++;
 		}
+		Arrays.sort(apMath, 1, numberOfApMathStudents + 1);
+		Arrays.sort(compSci, 1, numberOfCompSciStudents + 1);
+		Arrays.sort(stats, 1, numberOfStatsStudents + 1);
+		
+		FileService.writeNewFiles(apMath, compSci, stats);
+		
 		//testing
-		for (Student student : compSci) {
-			System.out.println(student.getDetails());
-		}	
+//		for (Student student : apMath) {
+//			System.out.println(student.getDetails());
+//		}	
 	}
+
+//	public static void sortStudentsByGrade() {
+//		Arrays.sort(apMath);
+//		
+//		for (Student student : apMath) {
+//		System.out.println(student.getDetails());
+//	}
+	
 }

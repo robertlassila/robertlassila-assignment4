@@ -1,6 +1,6 @@
 package com.coderscampus.assignment4;
 
-public class Student {
+public class Student implements Comparable<Student> {
 	private String id;
 	private String name;
 	private String course;
@@ -15,9 +15,19 @@ public class Student {
 		this.course = course;
 		this.grade = grade;
 	}
+	@Override
+	public int compareTo(Student that) {
+		if (Integer.parseInt(this.grade) > Integer.parseInt(that.grade)) {
+			return -1;
+		} else if (this.grade == that.grade) {
+			return this.name.compareTo(that.name);
+		} else {
+			return 1;
+		}
+	}
 	
 	public String getDetails() {
-		return id + " " + name + " " +  course + " " + grade;
+		return id + ", " + name + ", " +  course + ", " + grade;
 	}
 	
 	public String getId() {
