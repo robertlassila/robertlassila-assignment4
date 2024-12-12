@@ -16,6 +16,10 @@ public class Student {
 		this.grade = grade;
 	}
 	
+	public String getDetails() {
+		return id + " " + name + " " +  course + " " + grade;
+	}
+	
 	public String getId() {
 		return id;
 	}

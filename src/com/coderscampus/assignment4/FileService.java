@@ -10,11 +10,10 @@ public class FileService {
 		int numberOfStudents = FileService.getNumberOfStudents(filePath);
 		students = new Student[(numberOfStudents)];
 		readFileAndCreateStudents(filePath);
-		separateStudentCourseAbbreviationAndNumber();
-		
-		for (Student student : students) {
-			System.out.println(student.getCourse());
-		}
+		separateStudentCourseAbbreviationAndNumber(numberOfStudents);
+		StudentService.determineNumberOfStudentsInEachCourse(students, numberOfStudents);
+		StudentService.separateStudentsByClass(students, numberOfStudents);
+
 	
 	}
 	
@@ -58,19 +57,31 @@ public class FileService {
 		}
 		
 	}
-	public void separateStudentCourseAbbreviationAndNumber() {
+	public void separateStudentCourseAbbreviationAndNumber(int numberOfStudents) {
 		String line;
-		int index = 0;
+		int index = 1;
 		
-		for (Student student : students) {
-			line = student.getCourse();
+		while (index < numberOfStudents) {
+			line = students[index].getCourse();
 			
 			String[] studentCourseAbbreviationAndNumber = line.split(" ");
 			
-			student.setCourseAbbreviation(studentCourseAbbreviationAndNumber[0]);
-			//student.setCourseNumber(studentCourseAbbreviationAndNumber[1]);
+			students[index].setCourseAbbreviation(studentCourseAbbreviationAndNumber[0]);
+			students[index].setCourseNumber(studentCourseAbbreviationAndNumber[1]);
+			
+			index++;
 			
 		}
+		
+//		for (Student student : students) {
+//			line = student.getCourse();
+//			
+//			String[] studentCourseAbbreviationAndNumber = line.split(" ");
+//			
+//			student.setCourseAbbreviation(studentCourseAbbreviationAndNumber[0]);
+//			student.setCourseNumber(studentCourseAbbreviationAndNumber[1]);
+//			
+//		}
 	}
 
 }
