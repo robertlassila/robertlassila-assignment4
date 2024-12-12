@@ -71,9 +71,11 @@ public class StudentService {
 		for (Student student : apMath) {
 			System.out.println(student.getDetails());
 		}
+		System.out.println("---------");
 		for (Student student : compSci) {
 			System.out.println(student.getDetails());
 		}
+		System.out.println("---------");
 		for (Student student : stats) {
 			System.out.println(student.getDetails());
 		}
